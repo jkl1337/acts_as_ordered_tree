@@ -19,7 +19,7 @@ module ActsAsOrderedTree
         if recursive_table_value && recursive_query_value
           join_sql = "INNER JOIN (" +
                        recursive_query_sql +
-                     ") AS #{recursive_table_value} ON #{recursive_table_value}.id = #{table.name}.id"
+                     ") #{recursive_table_value} ON #{recursive_table_value}.id = #{table.name}.id"
 
           except(:recursive_table, :recursive_query).joins(join_sql).build_arel
         else
@@ -29,7 +29,7 @@ module ActsAsOrderedTree
 
       def update_all(updates, conditions = nil, options = {})
         if recursive_table_value && recursive_query_value
-          scope = where("id IN (SELECT id FROM (#{recursive_query_sql}) AS #{recursive_table_value})").
+          scope = where("id IN (SELECT id FROM (#{recursive_query_sql}) #{recursive_table_value})").
               except(:recursive_table, :recursive_query, :limit, :order)
 
           scope.update_all(updates, conditions, options)
