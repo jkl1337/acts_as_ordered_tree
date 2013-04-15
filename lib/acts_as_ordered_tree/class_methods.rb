@@ -1,4 +1,5 @@
 require "acts_as_ordered_tree/adapters/postgresql_adapter"
+require "acts_as_ordered_tree/adapters/oracle_enhanced_adapter"
 
 module ActsAsOrderedTree
   module ClassMethods
