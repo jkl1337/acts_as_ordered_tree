@@ -10,5 +10,7 @@ gem 'mysql2', :platform => :ruby
 gem "activerecord-jdbcpostgresql-adapter", "~> 1.2.2", :platform => :jruby
 gem "activerecord-jdbcsqlite3-adapter", "~> 1.2.2", :platform => :jruby
 gem "activerecord-jdbcmysql-adapter", "~> 1.2.2", :platform => :jruby
+gem "activerecord-jdbcmysql-adapter", "~> 1.2.2", :platform => :jruby
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.2'
 
 gem "simplecov", :platform => :ruby_19

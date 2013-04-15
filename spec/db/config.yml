@@ -14,3 +14,8 @@ mysql:
 sqlite3:
   adapter: sqlite3
   database: acts_as_ordered_tree.sqlite3.db
+oracle:
+  adapter: oracle_enhanced
+  database: xe
+  username: ordered_tree
+  password: ordered_tree
