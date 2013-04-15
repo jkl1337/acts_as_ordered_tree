@@ -71,6 +71,16 @@ module ActsAsOrderedTree
       end
 
       def self_and_descendants
+        # query = <<-QUERY
+        #   SELECT #{primary_key} AS id, #{parent_column}, level, #{position_column}
+        #   FROM #{self.class.quoted_table_name}
+        #   START WITH #{arel[:id].eq(id).to_sql}
+        #   CONNECT BY PRIOR #{primary_key} = #{parent_column}
+        #   ORDER SIBLINGS BY #{position_column}
+        # QUERY
+
+        # connect_by_scope.with_connect_by("descendants", query)
+
         query = <<-QUERY
           SELECT id, #{parent_column}, #{position_column}
           FROM #{self.class.quoted_table_name}

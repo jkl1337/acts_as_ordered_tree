@@ -482,6 +482,10 @@ module ActsAsOrderedTree
       self.class.arel_table
     end
 
+    def primary_key #:nodoc:
+      self.class.primary_key
+    end
+
     def ordered_tree_scope #:nodoc:
       if scope_column_names.empty?
         self.class.base_class.scoped
