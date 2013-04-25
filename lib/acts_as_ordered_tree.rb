@@ -22,8 +22,10 @@ module ActsAsOrderedTree
     class_attribute :acts_as_ordered_tree_options, :instance_writer => false
     self.acts_as_ordered_tree_options = options
 
-    acts_as_ordered_tree_options[:depth_column] = nil unless
+    if options[:depth_column]
+      acts_as_ordered_tree_options[:depth_column] = nil unless
         columns_hash.include?(acts_as_ordered_tree_options[:depth_column].to_s)
+    end
 
     extend  Columns
     include Columns
